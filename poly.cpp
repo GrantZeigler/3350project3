@@ -6,44 +6,66 @@
 
 using namespace std;
 
-namespace main_savitch_5
-{
-	void poly::copy(const poly& p)
+	poly::poly()
 	{
-		// Pre: p is a valid polynomial.
-		// Post: p is copied into the implicit parameter.
-
-		nterms = p.nterms;
-		terms = new term[MAXSIZE = p.MAXSIZE];
-		for (unsigned int i = 0; i < nterms; i++)
-			terms[i] = p.terms[i];
+		variable = 'x';
+		this->terms = new node;
 	};
 
-	poly::poly(const poly& p) //DEEP COPY SEMANTICS
+	poly::poly(const poly& hold)
+	{
+		variable = hold.variable;
+		terms = hold.terms;
+	};
+
+	void poly::free()
+	{
+		delete [] terms;
+		terms = NULL;
+	}
+
+	poly& poly::operator= (const poly& p) //DEEP COPY SEMANTICS
 	{
 		// Pre: p is a valid polynomial.
-		// Post: p is copied into the implicit parameter
-		// using "deep copy semantics."
+		// Post: The value of p is assigned to the implicit parameter
+		// by "deep copy semantics."  Any necessary deallocation is
+		// done along the way.
 
-		copy(p);
+		if (this != &p)
+		{
+			free();
+			copy(p);
+		};
+		return (*this);
 	};
 
 
+	poly::~poly()
+	{
+		free();
+	};
 
+	poly& poly::operator= (const poly&)
+	{
 
+	}
+	void poly::read()
+	{
 
+	};
+	void poly::write() const
+	{
 
+	};
+	poly poly::plus(poly) const
+	{
 
+	};
+	poly poly::minus(poly) const
+	{
 
+	};
+	float poly::evaluate(float) const
+	{
 
-
-
-
-
-
-
-
-
-
-
-}
+	};
