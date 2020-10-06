@@ -2,6 +2,7 @@
 // Copyright by Venu Dasigi
 
 #include "poly.h"
+#include "node.h"
 #include <iostream>
 
 using namespace std;
@@ -14,7 +15,7 @@ int main ()
 	//       Based on what command the user inputs, take
 	//       the appropriate action as guaranteed by the menu.
 	//       Input is accepted in a case-insensitive manner!
-	poly p[MAX];
+	node* p;
 	char command;
 	unsigned char i;
 	unsigned char j;
@@ -22,7 +23,6 @@ int main ()
 	int q;
 	//float value;
 	void printmenu ();
-
 	
 	do
 	{

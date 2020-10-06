@@ -14,23 +14,21 @@ using namespace std;
 
 	poly::poly(const poly& hold)
 	{
-		variable = hold.variable;
-		terms = hold.terms;
+		copy(hold);
+	};
+
+	void poly::copy(const poly& hold)
+	{
+		terms->set_data(hold.terms->data);
 	};
 
 	void poly::free()
 	{
-		delete [] terms;
-		terms = NULL;
+		list_clear(terms);
 	}
 
-	poly& poly::operator= (const poly& p) //DEEP COPY SEMANTICS
+	poly& poly::operator= (const poly& p)
 	{
-		// Pre: p is a valid polynomial.
-		// Post: The value of p is assigned to the implicit parameter
-		// by "deep copy semantics."  Any necessary deallocation is
-		// done along the way.
-
 		if (this != &p)
 		{
 			free();
@@ -45,27 +43,56 @@ using namespace std;
 		free();
 	};
 
-	poly& poly::operator= (const poly&)
-	{
-
-	}
 	void poly::read()
 	{
+		poly temp;
+		int coeff;
+		int exp;
+		cout << "Input a polynomial by first specifying the variable and then the terms in any order." << endl
+			<< "Each term is specified by an integer coefficient and" << endl
+			<< "a non-negative integer exponent." << endl
+			<< "Indicate END by specifying a dummy term with" << endl
+			<< "a zero coefficient and/or a negative exponent." << endl;
 
+		cin >> temp.variable;
+		do
+		{
+			cin >> coeff;
+			if (coeff)
+			{
+				cin >> exp;
+				if (exp >= 0)
+					temp.InsertTermSorted(term(coeff, exp));
+			}
+			else
+				while (cin && (cin.peek() != '\n')) cin.ignore();
+		} while (coeff && (exp >= 0));
+		*this = temp; // The assignment operator is being called here!
 	};
+
 	void poly::write() const
 	{
 
 	};
+
 	poly poly::plus(poly) const
 	{
 
 	};
+
 	poly poly::minus(poly) const
 	{
 
 	};
+
 	float poly::evaluate(float) const
 	{
 
 	};
+
+	void poly::InsertTermSorted(term)
+	{
+
+	};
+
+	
