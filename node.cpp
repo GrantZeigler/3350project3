@@ -135,24 +135,6 @@ namespace main_savitch_5
 
     void list_insert_sorted(node*& head_ptr, const node::value_type*& entry)
     {
-		node* current;
-		/* Special case for the head end */
-		if (head_ptr == NULL || head_ptr->data >= entry->exp)
-		{
-			list_head_insert(head_ptr, entry);
-		}
-		else
-		{
-			/* Locate the node before the point of insertion */
-			current = *head_ref;
-			while (current->next != NULL &&
-				current->next->data < new_node->data)
-			{
-				current = current->next;
-			}
-			new_node->next = current->next;
-			current->next = new_node;
-		}
 	
 	}
 

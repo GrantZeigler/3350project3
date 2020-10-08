@@ -73,7 +73,6 @@ using namespace std;
 	void poly::write() const
 	{
 		char var = this->variable;
-
 		int i = 0;
 		while (i < list_length(terms))
 		{
