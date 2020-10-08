@@ -19,7 +19,7 @@ using namespace std;
 
 	void poly::copy(const poly& hold)
 	{
-		terms->set_data(hold.terms->data);
+		terms->set_data(hold.terms->data());
 	};
 
 	void poly::free()
@@ -72,7 +72,13 @@ using namespace std;
 
 	void poly::write() const
 	{
+		char var = this->variable;
 
+		int i = 0;
+		while (i < list_length(terms))
+		{
+			
+		}
 	};
 
 	poly poly::plus(poly) const
@@ -89,10 +95,9 @@ using namespace std;
 	{
 
 	};
-
-	void poly::InsertTermSorted(term)
+	
+	void poly::InsertTermSorted(term t)
 	{
 
 	};
-
 	
