@@ -22,8 +22,6 @@ int main ()
 	int q;
 	//float value;
 	void printmenu ();
-
-	printmenu();
 	do
 	{
 		printmenu();
@@ -66,7 +64,7 @@ int main ()
 			cin >> j;
 			cout << "Location of Result: ";
 			cin >> q;
-			p[q] = p[i].plus(p[j]);
+		//	p[q] = p[i].plus(p[j]);
 			break;
 		case '-':
 			cout << "Polynomial 1 Location: ";
@@ -75,21 +73,21 @@ int main ()
 			cin >> j;
 			cout << "Location of Result: ";
 			cin >> q;
-			p[q] = p[i].minus(p[j]);
+		//	p[q] = p[i].minus(p[j]);
 			break;
 		case 'e':
 			cout << "Polynomial Location: ";
 			cin >> i;
 			cout << "Variable Value: ";
 			cin >> e;
-			cout << "Answer is: " << p[i].evaluate(e) << endl;
+		//	cout << "Answer is: " << p[i].evaluate(e) << endl;
 			break;
 		case 'E':
 			cout << "Polynomial Location: ";
 			cin >> i;
 			cout << "Variable Value: ";
 			cin >> e;
-			cout << "Answer is: " << p[i].evaluate(e) << endl;
+		//	cout << "Answer is: " << p[i].evaluate(e) << endl;
 			break;
 		case 'q':
 			break;
