@@ -74,24 +74,20 @@ using namespace std;
 
 	void poly::write() const
 	{
-		char var = variable;
-		node* currNode;
-		term current;
-		size_t i = 0;
-		
-		currNode->set_data(terms->data());
-		currNode->set_link(terms->link());
-		
 		cout << "Formatted Polynomial: ";
+		int i = 0;
+
+		node* currNode = terms;
+		term currTerm;
+		char var = this->variable;
+
+		
 		while (i < list_length(terms))
 		{
-			current = currNode->data();
-
-			cout << current.sign() << current.coeff << var << current.exp << " ";
+			currTerm = currNode->data();
+			cout << currTerm.sign() << currTerm.coeff << var << currTerm.exp << " ";
 
 			currNode->set_link(currNode->link());
-
-			i++;
 		}
 		cout << " = 0" << endl << endl;
 	};
@@ -110,7 +106,7 @@ using namespace std;
 	{
 
 	};
-	*/
+*/
 	void poly::InsertTermSorted(term t)
 	{
 		list_insert_sorted(terms, t);
