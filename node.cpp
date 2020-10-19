@@ -138,7 +138,7 @@ namespace main_savitch_5
 		node* current;
 		node* next;
 		//case for head pointer being replaced
-		if (head_ptr == nullptr || entry.operator>(head_ptr->data()))
+		if (head_ptr == nullptr || (entry.operator>(head_ptr->data()) == true))
 		{
 			list_head_insert(head_ptr, entry);
 			return;
@@ -149,10 +149,10 @@ namespace main_savitch_5
 			next = current->link();
 			while (current->link() != nullptr && entry.operator>(next->data()))
 			{
-				current->set_link(current->link());
 				next = current->link();
+				current = current->link();
 			}
-			list_insert(current, entry);
+			list_insert(current,entry);
 		}
 	}
 

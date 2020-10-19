@@ -1,4 +1,4 @@
-//poly.cpp
+	//poly.cpp
 //Grant Zeigler
 #include <cassert>
 #include <iostream>
@@ -9,7 +9,7 @@ using namespace std;
 	poly::poly()
 	{
 		variable = 'x';
-		this->terms = new node;
+		terms = new node;
 	};
 
 	poly::poly(const poly& hold)
@@ -19,7 +19,9 @@ using namespace std;
 
 	void poly::copy(const poly& hold)
 	{
-		terms->set_data(hold.terms->data());
+		node* head = new node;
+		node* tail = new node;
+		list_copy(hold.terms, head, tail);
 	};
 
 	void poly::free()
@@ -72,15 +74,16 @@ using namespace std;
 
 	void poly::write() const
 	{
-		char var = this->variable;
+		char var = variable;
 		node* currNode;
 		term current;
 		size_t i = 0;
 		
-		currNode = this->terms;
+		currNode->set_data(terms->data());
+		currNode->set_link(terms->link());
 		
 		cout << "Formatted Polynomial: ";
-		while (i < list_length(this->terms))
+		while (i < list_length(terms))
 		{
 			current = currNode->data();
 
