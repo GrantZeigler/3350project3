@@ -75,7 +75,7 @@ using namespace std;
 	void poly::write() const
 	{
 		cout << "Formatted Polynomial: ";
-		int i = 0;
+		unsigned int i = 0;
 
 		node* currNode = terms;
 		term currTerm;
@@ -87,29 +87,108 @@ using namespace std;
 			currTerm = currNode->data();
 			cout << currTerm.sign() << currTerm.coeff << var << currTerm.exp << " ";
 
-			currNode->set_link(currNode->link());
+			currNode = currNode->link();
+			i++;
 		}
 		cout << " = 0" << endl << endl;
 	};
 
-/*	poly poly::plus(poly right) const
+	poly poly::plus(poly right) const
 	{
+		node* leftNode = this->terms;
+		node* rightNode = right.terms;
 
+		poly newPoly;
+		
+		node* newCurrent = newPoly.terms;
+
+		term newTerm;
+
+		unsigned int i = 0;
+
+		cout << "Answer: ";
+
+		while (i < list_length(this->terms))
+		{
+			term leftTerm = leftNode->data();
+			term rightTerm = rightNode->data();
+
+			newTerm.coeff = leftTerm.coeff + rightTerm.coeff;
+			newTerm.exp = leftTerm.exp;
+
+			cout << newTerm.coeff << newPoly.variable << newTerm.exp << " ";
+
+			leftNode = leftNode->link();
+			rightNode = rightNode->link();
+		
+			list_insert_sorted(newPoly.terms, newTerm);
+			
+			i++;
+		}
+
+		return newPoly;
 	};
 
 	poly poly::minus(poly right) const
 	{
+		node* leftNode = this->terms;
+		node* rightNode = right.terms;
 
+		poly newPoly;
+
+		node* newCurrent = newPoly.terms;
+
+		term newTerm;
+
+		unsigned int i = 0;
+
+		cout << "Answer: ";
+
+		while (i < list_length(this->terms))
+		{
+			term leftTerm = leftNode->data();
+			term rightTerm = rightNode->data();
+
+			newTerm.coeff = leftTerm.coeff - rightTerm.coeff;
+			newTerm.exp = leftTerm.exp;
+
+			cout << newTerm.coeff << newPoly.variable << newTerm.exp << " ";
+
+			leftNode = leftNode->link();
+			rightNode = rightNode->link();
+
+			list_insert_sorted(newPoly.terms, newTerm);
+
+			i++;
+		}
+
+		return newPoly;
 	};
 
-	float poly::evaluate(float) const
+	float poly::evaluate(float val) const
 	{
+		float runningTotal = 0;
+		unsigned int i = 0;
+		term currentval;
+		node* current = terms;
+		float hold;
+		while (i < list_length(terms))
+		{
+			currentval = current->data();
+			hold = currentval.coeff * val;
 
+			runningTotal = pow(hold, currentval.exp);
+			current = current->link();
+			i++;
+		}
+
+
+		return runningTotal;
 	};
-*/
+
 	void poly::InsertTermSorted(term t)
 	{
-		list_insert_sorted(terms, t);
+		list_insert_sorted(this->terms, t);
 	};
 	
 	
